@@ -1,0 +1,11 @@
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\bin\Debug\GameWinFrom.exe.config
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.csprojResolveAssemblyReference.cache
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.Form1.resources
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.Properties.Resources.resources
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.csproj.GenerateResource.Cache
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\bin\Debug\GameWinFrom.exe
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\bin\Debug\GameWinFrom.pdb
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\bin\Debug\GameLogic.dll
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\bin\Debug\GameLogic.pdb
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.exe
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameWinFrom\obj\Debug\GameWinFrom.pdb

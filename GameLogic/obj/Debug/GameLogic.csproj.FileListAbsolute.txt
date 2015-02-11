@@ -1,0 +1,5 @@
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameLogic\obj\Debug\GameLogic.csprojResolveAssemblyReference.cache
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameLogic\bin\Debug\GameLogic.dll
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameLogic\bin\Debug\GameLogic.pdb
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameLogic\obj\Debug\GameLogic.dll
+c:\users\tomato\documents\visual studio 2013\Projects\SudokuGame\GameLogic\obj\Debug\GameLogic.pdb
