@@ -14,9 +14,11 @@ namespace GameWinFrom
 {
     public partial class Form1 : Form
     {
-        TextBox[,] _map = new TextBox[9, 9];
-        Game newGame;
-
+        Label[,] _map = new Label[9, 9];
+        Game4 newGame4;
+        Game6 newGame6;
+        Game9 newGame9;
+        int gameSize = 0;
         //
         //_map initiation
         //
@@ -27,10 +29,14 @@ namespace GameWinFrom
             {
                 for (int col = 0; col < 9; col++)
                 {
-                    var temp = new TextBox();
+                    var temp = new Label();
                     temp.Text = "";
                     temp.Size = new Size(24, 24);
-                    temp.Location = new Point(row * 30 + 30, col * 30 + 30);
+                    temp.Location = new Point(col * 30 + 30, row * 30 + 30);
+                    temp.BorderStyle = BorderStyle.FixedSingle;
+                    temp.BackColor = Color.White;
+                    temp.Visible = false;
+                    temp.Click += new System.EventHandler(this.Map_Click);
                     _map[row, col] = temp;
                     this.Controls.Add(temp);
                 }
@@ -49,7 +55,6 @@ namespace GameWinFrom
         //
         private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int gameSize = 0;
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -85,8 +90,17 @@ namespace GameWinFrom
         {
             //tells user the game size
             labelGameSize.Text = "This is a " + gameSize + "*" + gameSize + " game.";
-
-            newGame = new Game(gameSize, dataList);
+            labelSysMonitor.Text = "Console:>_ \n\n";
+           // if (gameSize == 4)
+                //Game4 newGame = new Game4(dataList);
+            //else
+               // Game6 newGame = new Game6(dataList);
+            if (gameSize == 4)
+                newGame4 = new Game4(dataList);
+            else if (gameSize == 6)
+                newGame6 = new Game6(dataList);
+            else if (gameSize == 9)
+                newGame9 = new Game9(dataList);
 
             //initiate the TextBox array property settings
             for (int i = 0; i < 9; i++)
@@ -100,7 +114,6 @@ namespace GameWinFrom
                     else
                     {
                         _map[i, j].Visible = false;
-                        _map[i, j].Enabled = false;
                     }
 
                 }
@@ -116,9 +129,155 @@ namespace GameWinFrom
                 int col = int.Parse(tempArray[1]);
                 int val = int.Parse(tempArray[2]);
                 _map[row, col].Text = val.ToString();
-                _map[row, col].Enabled = false;
+                _map[row, col].BackColor = Color.Transparent;
 
             }
+        }
+        //
+        //label click event
+        //
+        private void Map_Click(object sender, EventArgs e)
+        {
+            if (((Label)sender).BackColor == Color.White)
+            {
+                labelSysMonitor.Text = "Console:>_ \n\n";
+
+                int tempInt;
+                int tempRow = 0;
+                int tempCol = 0;
+                string tempStr = ((Label)sender).Text;
+
+                if (tempStr == "")
+                    tempInt = 0;
+                else
+                    tempInt = int.Parse(tempStr);
+                if (tempInt == 9)
+                    tempInt = 0;
+                tempInt++;
+                tempStr = tempInt.ToString();
+                ((Label)sender).Text = tempStr;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (((object)sender).Equals(_map[i, j]))
+                        {
+                            tempRow = i;
+                            tempCol = j;
+                        }
+                    }
+                }
+
+                if (gameSize == 4)
+                {
+                    newGame4.ValueChange(tempRow, tempCol, tempInt);
+                    labelSysMonitor.Text += newGame4.Test();
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (newGame4.TestValid(i, j))
+                                ColorChangeBlack(i, j);
+                            else
+                                ColorChangeRed(i, j);
+                        }
+                    }
+
+                    labelSysMonitor.Text += newGame4.BoolTest();
+                    if (newGame4.TestComplete())
+                        labelSysMonitor.Text += "completed\n\n";
+                    else
+                        labelSysMonitor.Text += "not completed\n\n";
+                    if (newGame4.TestWin())
+                    {
+                        labelSysMonitor.Text += "you win\n";
+                        MessageBox.Show("You win");
+                        return;
+                    }
+                    else
+                    {
+                        labelSysMonitor.Text += "not win yet";
+                    }
+                }
+                else if (gameSize == 6)
+                {
+                    newGame6.ValueChange(tempRow, tempCol, tempInt);
+                    labelSysMonitor.Text += newGame6.Test();
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            if (newGame6.TestValid(i, j))
+                                ColorChangeBlack(i, j);
+                            else
+                                ColorChangeRed(i, j);
+                        }
+                    }
+
+                    labelSysMonitor.Text += newGame6.BoolTest();
+                    if (newGame6.TestComplete())
+                        labelSysMonitor.Text += "completed\n\n";
+                    else
+                        labelSysMonitor.Text += "not completed\n\n";
+                    if (newGame6.TestWin())
+                    {
+                        labelSysMonitor.Text += "you win\n";
+                        MessageBox.Show("You win");
+                        return;
+                    }
+                    else
+                    {
+                        labelSysMonitor.Text += "not win yet";
+                    }
+                }
+                else if (gameSize == 9)
+                {
+                    newGame9.ValueChange(tempRow, tempCol, tempInt);
+                    labelSysMonitor.Text += newGame9.Test();
+
+                    for (int i = 0; i < 9; i++)
+                    {
+                        for (int j = 0; j < 9; j++)
+                        {
+                            if (newGame9.TestValid(i, j))
+                                ColorChangeBlack(i, j);
+                            else
+                                ColorChangeRed(i, j);
+                        }
+                    }
+
+                    labelSysMonitor.Text += newGame9.BoolTest();
+                    if (newGame9.TestComplete())
+                        labelSysMonitor.Text += "completed\n\n";
+                    else
+                        labelSysMonitor.Text += "not completed\n\n";
+                    if (newGame9.TestWin())
+                    {
+                        labelSysMonitor.Text += "you win\n";
+                        MessageBox.Show("You win");
+                        return;
+                    }
+                    else
+                    {
+                        labelSysMonitor.Text += "not win yet";
+                    }
+                }
+
+
+            }
+        }
+
+        private void ColorChangeRed(int row, int col)
+        {
+            _map[row, col].ForeColor = Color.Red;
+        }
+
+        private void ColorChangeBlack(int row, int col)
+        {
+            _map[row, col].ForeColor = Color.Black;
         }
 
     }
